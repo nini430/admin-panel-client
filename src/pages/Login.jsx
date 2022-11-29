@@ -18,7 +18,7 @@ const Login = () => {
 
   const handleLogin=async()=>{
       try {
-        const res=await axios.post("http://localhost:7000/api/auth/login",inputs,{withCredentials:true});
+        const res=await axios.post("https://adminpanelsystem.herokuapp.com/api/auth/login",inputs,{withCredentials:true});
         dispatch(loginUser(res.data))
         navigate("/");
 

@@ -51,7 +51,7 @@ const Register = () => {
         e.preventDefault();
         try {
             const img=await getAvatar();
-            const res=await axios.post(`http://localhost:7000/api/auth/${arg.reregister?'re':''}register`,{...inputs,img,arg});
+            const res=await axios.post(`https://adminpanelsystem.herokuapp.com/api/auth/${arg.reregister?'re':''}register`,{...inputs,img,arg});
             if(res.data.modal) {
                 setModal(res.data.modal);
                 return;

@@ -10,7 +10,7 @@ import {logoutUser} from "../redux/users/actions"
   const dispatch=useDispatch();
   const currentUser=useSelector(store=>store.auth.currentUser);
   const handleLogout=async()=>{
-    await axios.post("http://localhost:7000/api/auth/logout");
+    await axios.post("hhttps://adminpanelsystem.herokuapp.com/api/auth/logout");
     dispatch(logoutUser())
     navigate("/login");
 
