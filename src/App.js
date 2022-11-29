@@ -1,24 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import {createBrowserRouter,RouterProvider} from "react-router-dom";
+import { Register,Login, AdminPanel } from "./pages";
+import { AuthRoute,NonAuthRoute } from "./WrapperComponents";
+import {QueryClientProvider,QueryClient} from "@tanstack/react-query"
+ 
+
+const router=createBrowserRouter([
+  {
+    path:"/register",
+    element:<NonAuthRoute><Register/></NonAuthRoute>
+
+  },
+  {
+    path:"/login",
+    element:<NonAuthRoute><Login/></NonAuthRoute>
+  },
+  {
+    path:"/",
+    element:<AuthRoute><AdminPanel/></AuthRoute>
+  }
+])
 
 function App() {
+  const client=new QueryClient();
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <QueryClientProvider client={client}>
+     <RouterProvider router={router}/>
+     </QueryClientProvider>
   );
 }
 
